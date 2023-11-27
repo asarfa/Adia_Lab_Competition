@@ -108,8 +108,9 @@ set did not improve for 3 consecutive epochs. To prevent leakage, which takes
 place when the training set contains information that also appears in the validation, the training-validation sets are separated by a gap of 1 day as the labels
 are derived from 1 overlapping datapoint. Due to the stochastic nature of neural networks, the seed has been set to the default value 42 for reproducibility
 and consistent results. Gradient clipping was set to the default value 1 to prevent exploding gradients during training.
-The size of the universe being non-constant through time, it has been a necessary step to fix a maximum size for training the model. There are a number of advantages to this, such as memory and computation efficiency, consistent input size, etc.
-The maximum formation size has been set at the 95th percentile (3951). This approach ensures that the majority of stocks are adequately represented in the listings, while also dealing with long tail cases.
+The size of the universe being non-constant through time, it has been a necessary step to fix the size during the model's training. There are a number of advantages to this, such as memory and computation efficiency, consistent input size, etc.
+The training size has been set at the 95th percentile (3951), using padding for the shorter cases and random sampling with the longer cases. This approach ensures that the majority of stocks are adequately represented in the listings, while also dealing with long tail cases.
+Thanks to masking, which ignores the line whose target value is equal to the mask value when calculating the loss, padding shorter cases do not not affect the loss calculation.
 
 
 ### Hyper-Optimization
