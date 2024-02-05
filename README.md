@@ -51,7 +51,7 @@ developed following the paper "Context-Aware Learning to Rank with Self-Attentio
 Stock's target for each date are treated as tokens and stock's features as input token embeddings. We denote the length of the universe in t as 𝑙 and the
 number of features as 𝑑𝑓
 . Each item is first passed through a shared
-fully connected layer of size 𝑑𝑓𝑐 . Next, hidden representations are
+fully connected layer of size 𝑑h . Next, hidden representations are
 passed through an encoder part of Transformer architecture with
 𝑁 encoder blocks, 𝐻 heads and hidden dimension 𝑑ℎ. An
 encoder block in the Transformer consists of a multi-head attention
@@ -66,7 +66,7 @@ on the input.
 Since the inputs do not possess any inherent sequence, a positional encoding was not incorporated into the design.
 
 ### Output Transformation
-The targets are scaled for each date to the interval [−1, 1] using a min-max scaler, leading to a constant interval across time.
+The predictions are scaled for each date to the interval [−1, 1] using a min-max scaler, leading to a constant interval across time.
 
 ### Environment Setup
 To reduce the effect of extreme outliers, all features (which are continuous) are
@@ -105,12 +105,11 @@ there is a train-validation split with the previous 90% of data for training and
 most recent 10% reserved for validation. Early stopping is used to prevent model
 overfitting, this is triggered when the model’s spearman loss on the validation
 set did not improve for 3 consecutive epochs. To prevent leakage, which takes
-place when the training set contains information that also appears in the validation, the training-validation sets are separated by a gap of 1 day as the labels
+place when the training set contains information that also appears in the validation, the training-validation sets are separated by a gap of 1 date as the labels
 are derived from 1 overlapping datapoint. Due to the stochastic nature of neural networks, the seed has been set to the default value 42 for reproducibility
 and consistent results. Gradient clipping was set to the default value 1 to prevent exploding gradients during training.
-The size of the universe being non-constant through time, it has been a necessary step to fix the size during the model's training. There are a number of advantages to this, such as memory and computation efficiency, consistent input size, etc.
+The size of the universe being non-constant through time, it has been a necessary step to fix it during the model's training. There are a number of advantages to this, such as memory and computation efficiency, consistent input size, etc.
 The training size has been set at the 95th percentile (3951), using padding for the shorter cases and random sampling with the longer cases. This approach ensures that the majority of stocks are adequately represented in the listings, while also dealing with long tail cases.
-Thanks to masking, which ignores the line whose target value is equal to the mask value when calculating the loss, padding shorter cases do not not affect the loss calculation.
 
 
 ### Hyper-Optimization
