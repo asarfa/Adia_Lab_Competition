@@ -118,7 +118,7 @@ To ensure that the model generalizes well to unseen data, a TS-CV has been imple
 of the data. The training set is split
 into 10 folds. It allows for multiple train-validation splits, where the validation set
 is always ahead of the training split. Each training set length remains constant,
-stabilizing the loss across folds, with a gap of 1 day between the training and
+stabilizing the loss across folds, with a gap of 1 date between the training and
 validation sets. By fitting and inferring on different time periods, we get a better idea of how the different hyperparameter values behave over different time periods, enabling us to select values
 that generalize well. Hyperparameter optimization has been performed with 20 iterations of bayesian search, using the next search range:
 
