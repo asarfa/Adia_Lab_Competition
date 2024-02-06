@@ -63,7 +63,7 @@ encoder blocks, a fully-connected layer shared across all items in the
 list is used to compute a score for each item. The model can be seen
 as an encoder part of the Transformer with extra linear projection
 on the input.
-Since the inputs do not possess any inherent sequence, a positional encoding was not incorporated into the design.
+Since the inputs do not possess any inherent sequence, no positional encoding was incorporated into the design.
 
 ### Output Transformation
 The predictions are scaled for each date to the interval [−1, 1] using a min-max scaler, leading to a constant interval across time.
