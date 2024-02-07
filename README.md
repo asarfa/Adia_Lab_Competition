@@ -30,7 +30,7 @@ Same structure as X_train but comprises only a few dates. This file is used to s
 
 ### Size of the Universe 
 
-The pool of investment vehicles are obtained through some rule (for example S&P 500 tracks the stock performance of the 500 largest companies in the US) at different date.
+The pool of investment vehicles is obtained through some rule (for example S&P 500 tracks the stock performance of the 500 largest companies in the US) at different date.
 Hence, the universe is evolving over time, the number of assets at time t can differ from t+1, resulting in stocks entering or existing the universe.
 
 |       | Training |
