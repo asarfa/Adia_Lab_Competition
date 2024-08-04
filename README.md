@@ -165,5 +165,6 @@ Public Leaderboard: 216/4477 (top 4.9%)
 
 Private Leaderboard: 250/4477 (top 5.6%)
 
-![image](https://github.com/user-attachments/assets/22119f3a-e56f-4d14-9606-d396f4c173cf)
+![image](https://github.com/user-attachments/assets/c9f19d1c-5162-4f03-b7f0-fd234bec3733)
+
 
